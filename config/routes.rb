@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   end
 
   namespace :admins_backoffice do
-    resources :admins, except: [:delete] # Administrados
     get 'welcome/index' # Dashboard
+    resources :admins # Administrados
+    resources :subjects #Assuntos/Áreas
+    resources :questions #Perguntas
 
   end
 

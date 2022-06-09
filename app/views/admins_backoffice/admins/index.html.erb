@@ -23,16 +23,17 @@
         <tr>  
           <td><%= admin.id %></td>
           <td><%= admin.email %></td>
-          <td style="width: 110px">
-            <%= link_to edit_admins_backoffice_admin_path(admin), class:"btn btn-circle btn-outline-info" do %>
+          <td style="display: flex;justify-content: right;">
+            <%= button_to edit_admins_backoffice_admin_path(admin), method: :get, class:"btn btn-circle btn-outline-info" do %>
               <i class="fa fa-edit"></i>
             <% end %>
-            <a href="#" class="btn btn-circle btn-outline-danger">
+            <%= button_to admins_backoffice_admin_path(admin), method: :delete, class:"btn btn-circle btn-outline-danger", data: { confirm:"Deseja realmente excluir?" } do %>
               <i class="fa fa-trash"></i>
-            </a>
+            <% end %>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
+  <%= paginate @admins %>
 </div>

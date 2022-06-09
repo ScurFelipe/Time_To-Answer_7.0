@@ -49,12 +49,25 @@
                 <%end %>
             </li>
             
-             
-
             <!-- Nav Item - Administradores -->
             <li class="nav-item">
                 <%= link_to admins_backoffice_admins_path, class:"nav-link" do %>
                   <i class="fa fa-fw fa-users"></i> Administradores
+                <%end %>
+            </li>
+            
+            <!-- Nav Item - Assuntos -->
+            <li class="nav-item">
+                <%= link_to admins_backoffice_subjects_path, class:"nav-link" do %>
+                  <i class="fa fa-fw fa-file-text-o"></i> Assuntos/Áreas
+                <%end %>
+            </li>
+            </li>
+            
+            <!-- Nav Item - Perguntas -->
+            <li class="nav-item">
+                <%= link_to admins_backoffice_questions_path, class:"nav-link" do %>
+                  <i class="fa fa-fw fa-th-list"></i> Perguntas
                 <%end %>
             </li>
 
@@ -166,6 +179,17 @@
     
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= javascript_include_tag "admins_backoffice", "data-turbo-track": "reload", defer: true %>
+
+    <% if notice %>
+      <%= javascript_tag do %>
+        $.bootstrapGrowl('<%= notice %>', {
+          type: 'success',
+          align: 'right',
+          allow_dismiss: true,
+          stackup_spacing: 10
+        });
+      <% end %>
+    <% end %>
 </body>
 
 </html>

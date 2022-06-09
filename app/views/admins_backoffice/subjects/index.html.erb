@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header"> Assuntos/Áreas </h1>
+  </div>
+</div>
+
+<div class= "table-resposive">
+  <table class= "table table-stripped table-bordered table-hove">
+    <thead>
+      <tr>  
+        <th>#</th>
+        <th>Descrição</th>
+        <th>
+          <%= link_to new_admins_backoffice_subject_path, class:"btn btn-circle btn-outline-success" do %>
+            <i class="fa fa-plus"></i>
+          <% end %>
+        </th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <% @subjects.each do |subject| %>
+        <tr>  
+          <td><%= subject.id %></td>
+          <td><%= subject.description %></td>
+          <td style="display: flex;justify-content: right;">
+            <%= button_to edit_admins_backoffice_subject_path(subject), method: :get, class:"btn btn-circle btn-outline-info" do %>
+              <i class="fa fa-edit"></i>
+            <% end %>
+            <%= button_to admins_backoffice_subject_path(subject), method: :delete, class:"btn btn-circle btn-outline-danger", data: { confirm:"Deseja realmente excluir?" } do %>
+              <i class="fa fa-trash"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @subjects %>
+</div>
