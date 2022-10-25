@@ -1,195 +1,131 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    
-    <title>TimeToAnswer</title>
 
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "admins_backoffice", "data-turbo-track": "reload" %>
+  <title>TimeToAnswer</title>
 
-    <!-- Custom fonts for this template--> <!--- 5.15.3 --->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  </head>
+  <%= stylesheet_link_tag    'application' %>
+  <%= stylesheet_link_tag    'admins_backoffice' %>
 
-    
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
 
-<body id="page-top">
+<body>
 
-    <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">BackOffice Administrativo <sup>Time to Answer</sup></div>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <%= link_to admins_backoffice_welcome_index_path, class:"nav-link" do %>
-                  <i class="fa fa-fw fa-dashboard"></i> Dashboard
-                <%end %>
-            </li>
-            
-            <!-- Nav Item - Administradores -->
-            <li class="nav-item">
-                <%= link_to admins_backoffice_admins_path, class:"nav-link" do %>
-                  <i class="fa fa-fw fa-users"></i> Administradores
-                <%end %>
-            </li>
-            
-            <!-- Nav Item - Assuntos -->
-            <li class="nav-item">
-                <%= link_to admins_backoffice_subjects_path, class:"nav-link" do %>
-                  <i class="fa fa-fw fa-file-text-o"></i> Assuntos/Áreas
-                <%end %>
-            </li>
-            </li>
-            
-            <!-- Nav Item - Perguntas -->
-            <li class="nav-item">
-                <%= link_to admins_backoffice_questions_path, class:"nav-link" do %>
-                  <i class="fa fa-fw fa-th-list"></i> Perguntas
-                <%end %>
-            </li>
-
-           <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Backoffice Administrativo</a>
             </div>
+            <!-- /.navbar-header -->
 
-        </ul>
-        <!-- End of Sidebar -->
-
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content">
-
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                       <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <%= image_tag 'undraw_profile.svg', class:"img-profile rounded-circle"%>
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <%= button_to  destroy_admin_session_path, method: :delete, class:"dropdown-item", href:"#", data: { toggle: "modal", target: "#logoutModal" } do %>
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                <% end %>
-                            </div>
-                        </li>
-
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">            
+                        <li>
+                          <%= link_to destroy_admin_session_path, method: :delete do %>
+                              <i class="fa fa-sign-out fa-fw"></i> Sair
+                          <% end %>
+                        </li>   
                     </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
 
-                </nav>
-                <!-- End of Topbar -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        
+                        <li>
+                            <%= link_to admins_backoffice_welcome_index_path do %>
+                              <i class="fa fa-dashboard fa-fw"></i> Dashboard
+                            <% end %>
+                        </li>
+                        
+                        <li>
+                            <%= link_to admins_backoffice_admins_path do %>
+                              <i class="fa fa-users fa-fw"></i> Administradores
+                            <% end %>
+                        </li>    
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+                        <li>
+                            <%= link_to admins_backoffice_subjects_path do %>
+                              <i class="fa fa-file-text-o fa-fw"></i> Assuntos/Áreas
+                            <% end %>
+                        </li>       
 
-                    <!-- Page Heading -->
-                    <%= yield %>
-
+                        <li>
+                            <%= link_to admins_backoffice_questions_path do %>
+                              <i class="fa fa-th-list fa-fw"></i> Perguntas
+                            <% end %>
+                        </li>                  
+                    </ul>
                 </div>
-                <!-- /.container-fluid -->
-
+                <!-- /.sidebar-collapse -->
             </div>
-            <!-- End of Main Content -->
+            <!-- /.navbar-static-side -->
+        </nav>
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <%= yield %>
                     </div>
+                    <!-- /.col-lg-12 -->
                 </div>
-            </footer>
-            <!-- End of Footer -->
-
-        </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
+                <!-- /.row -->
             </div>
+            <!-- /.container-fluid -->
         </div>
+        <!-- /#page-wrapper -->
+
     </div>
+    <!-- /#wrapper -->
 
-
-    
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-    <%= javascript_include_tag "admins_backoffice", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'admins_backoffice' %>
 
     <% if notice %>
-      <%= javascript_tag do %>
-        $.bootstrapGrowl('<%= notice %>', {
-          type: 'success',
-          align: 'right',
-          allow_dismiss: true,
-          stackup_spacing: 10
-        });
-      <% end %>
+        <%= javascript_tag do %>
+            $.bootstrapGrowl('<%= notice %>', {
+            type: 'success', // (null, 'info', 'danger', 'success')
+            align: 'right', // ('left', 'right', or 'center')
+            allow_dismiss: true, // If true then will display a cross to close the popup.
+            stackup_spacing: 10 // spacing between consecutively stacked growls.
+            });
+        <% end %>
     <% end %>
+
 </body>
 
 </html>
+
